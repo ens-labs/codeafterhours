@@ -2,7 +2,7 @@ var express = require('express')
   , routes = require('./routes')
   , path = require('path')
   , exhbs = require('express3-handlebars')
-  , sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
+  , sendgrid = require('sendgrid')(process.env.SENGRID_USERNAME, process.env.SENDRID_PASSWORD;
 
 var app = express();
 
@@ -32,6 +32,7 @@ app.post('/send_email', function(req, res) {
       if (err) { return console.error(err); }
       console.log(json);
 });
+      //There's some funny stuff here...
       if (res.codeStatus === 200) {
         res.redirect('done-email.html');
       }
